@@ -24,8 +24,18 @@ const Cart = () => {
     setReRender(!reRender)
   }
 
+  const decreaseMount = (obj: EachCartItemType) => {
+    const indexOfItemFound = newItemArray.findIndex((element: EachCartItemType) => element.id === obj.id)
+
+    if (newItemArray[indexOfItemFound].amount > 0) {
+      newItemArray[indexOfItemFound].amount = obj.amount-1
+      dispatch(setCartItem(newItemArray))
+      setReRender(!reRender)
+    }
+  }
+
   const calculator = () => {
-    
+
   }
 
   return (
@@ -41,7 +51,7 @@ const Cart = () => {
             <div className="add">
               <button onClick={()=>addMount(i)}>+</button>
               <p>{i.amount}</p>
-              <button>-</button>
+              <button onClick={()=>decreaseMount(i)}>-</button>
             </div>
           </BuyCart>
         ))
