@@ -1,17 +1,30 @@
-import { stat } from 'fs';
-import React, { useRef } from 'react';
-import { useSelector } from 'react-redux'
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { setCartItem } from '../../store/ducks/cartItem/actions';
 import { CarteItemState, EachCartItemType } from '../../store/ducks/cartItem/types';
 
 import { Container, BuyCart } from './styles';
 
 const Cart = () => {
 
+  const [reRender, setReRender] = useState<Boolean>(true)
+
   const cartItens = useSelector((state: CarteItemState) => state.cartItem.cartItens)
+  
+  const newItemArray = cartItens
+  
+  const dispatch = useDispatch()
 
-  console.log(cartItens)
 
-  const addMount = () => {
+  const addMount = (obj: EachCartItemType) => {
+    const indexOfItemFound = newItemArray.findIndex((element: EachCartItemType) => element.id === obj.id)
+
+    newItemArray[indexOfItemFound].amount = obj.amount+1
+    dispatch(setCartItem(newItemArray))
+    setReRender(!reRender)
+  }
+
+  const calculator = () => {
     
   }
 
@@ -24,10 +37,10 @@ const Cart = () => {
           <BuyCart key={i.id}>
             <img src={i.image} alt={i.title}/>
             <h2>{i.title}</h2>
-            <p>{i.price}</p>
+            <p className="price">{i.price}</p>
             <div className="add">
-              <button onClick={addMount}>+</button>
-              <p>1</p>
+              <button onClick={()=>addMount(i)}>+</button>
+              <p>{i.amount}</p>
               <button>-</button>
             </div>
           </BuyCart>

@@ -46,39 +46,21 @@ const Spotlights = () => {
     const newItemArray = cartItens
 
     const itemFound = newItemArray.find((element: EachCartItemType) => element.id === i.id)
+    const indexOfItemFound = newItemArray.findIndex((element: EachCartItemType) => element.id === i.id)
 
-    // function updateItemArray(newItemArray: any , item: any) {
-    //   if (newItemArray.indexOf(item) === -1) {
-    //     const newItem: EachCartItemType = {
-    //           description: i.description,
-    //           id: i.id,
-    //           image: i.image,
-    //           price: i.price,
-    //           title: i.title,
-    //           amount: 1
-    //     }
-    //     newItemArray.push(newItem)
-    //   } else {
-
-    //   }
-    // }
-
-    // }
     if (itemFound) {
-      itemFound.amount = itemFound.amount+1
-
-      function search(vetor: EachCartItemType[], element: any) {
-        if (vetor.indexOf(element) >= 0) {
-          return vetor.indexOf(element)
-        } else {
-          alert("DEU RUIM!")
-        }
+      console.log('Achei vc!', itemFound)
+      console.log('Indice!', indexOfItemFound)
+      const newItem: EachCartItemType ={
+        description: itemFound.description,
+        id: itemFound.id,
+        image: itemFound.image,
+        price: itemFound.price,
+        title: itemFound.title,
+        amount: itemFound.amount+1
       }
-
-      const index = newItemArray.indexOf(search(newItemArray, i.id)
-      const milagre = newItemArray.splice(index, 1, itemFound)
-      newItemArray.push(itemFound)
-
+      newItemArray.splice(indexOfItemFound, 1, newItem)
+      dispatch(setCartItem(newItemArray))
 
     } else {
       const newItem: EachCartItemType = {
@@ -90,10 +72,10 @@ const Spotlights = () => {
         amount: 1
       }
       newItemArray.push(newItem)
+      dispatch(setCartItem(newItemArray))
     }
 
-    dispatch(setCartItem(newItemArray))
-    console.log(newItemArray)
+    
   }
 
   return (
