@@ -21,6 +21,11 @@ export const Container = styled.div`
             font-size: 25px;
             margin-right: 20px
         }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
     }
     }  
 `

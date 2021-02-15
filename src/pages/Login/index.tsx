@@ -3,10 +3,9 @@ import api from '../../services/api';
 import { Redirect } from 'react-router-dom'
 
 import { Container } from './styles';
+import Header from '../../components/Header';
 
 const Login = () => {
-
-  const [adulthood, setAdulthood] = useState<Boolean>(false)
   const [permission, setPermission] = useState<Boolean>(false)
 
   const inputName = useRef<HTMLInputElement>(null)

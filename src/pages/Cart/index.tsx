@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import Header from '../../components/Header';
+import Notification from '../../components/Notification';
 import { setCartItem } from '../../store/ducks/cartItem/actions';
 import { CarteItemState, EachCartItemType } from '../../store/ducks/cartItem/types';
 
@@ -39,7 +41,8 @@ const Cart = () => {
   }
 
   return (
-
+    <>
+    <Notification />
     <Container>
       <h1>Carrrinho</h1>
       {
@@ -57,6 +60,7 @@ const Cart = () => {
         ))
       }
     </Container>
+    </>
   );
 };
 

@@ -30,4 +30,7 @@ export const BuyCart = styled.div`
         right: 500px;
     }
 
+    button {
+        width: 25px;
+    }
 `
