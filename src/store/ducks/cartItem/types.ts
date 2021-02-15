@@ -1,5 +1,6 @@
 export enum CartItemEnumType {
-    SET_ITEM = '@SET_ITEM'
+    SET_ITEM = '@SET_ITEM',
+    DELETE_ITEM = '@DELETE_ITEM'
 }
 
 export interface EachCartItemType {

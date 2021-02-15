@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Header from '../../components/Header';
 import Notification from '../../components/Notification';
 import { BudgetItemState, BudgetItemType, BudgetType } from '../../store/ducks/budget/types';
-import { setCartItem } from '../../store/ducks/cartItem/actions';
+import { deleteCartItem, setCartItem } from '../../store/ducks/cartItem/actions';
 import { CarteItemState, EachCartItemType } from '../../store/ducks/cartItem/types';
 
 import { Container, BuyCart } from './styles';
@@ -60,6 +60,11 @@ const Cart = () => {
     result = budget.reduce(reducerArray)
   }
 
+  const finishOrder = () => {
+    alert('Seu pedido foi realizado.')
+    dispatch(deleteCartItem())
+  }
+
   return (
     <>
     <Notification />
@@ -83,7 +88,10 @@ const Cart = () => {
       }
       {
         result > 0 &&
+        <>
         <p>Total do pedido: R$ {result.toFixed(2)}</p>
+        <button onClick={finishOrder}>FIM DE TUDO!</button>
+        </>
       }
     </Container>
     </>

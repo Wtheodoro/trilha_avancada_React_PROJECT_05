@@ -12,6 +12,10 @@ function reducerCartItem(state = initialStateCart, action: any) {
                 ...state,
                 cartItens: action.payload,
             }
+        case CartItemEnumType.DELETE_ITEM:
+            return {
+                cartItens: []
+            }
         default:
             return state
     }
