@@ -6,9 +6,10 @@ export const Container = styled.div`
 `;
 
 export const BuyCart = styled.div`
-    margin: 10px 40px;
+    margin: 10px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background: white;
     border-radius: 20px;
     
@@ -19,18 +20,26 @@ export const BuyCart = styled.div`
 
     h2 {
         font-size: 1rem;
-    }
-
-    .price {
-        margin-left: 50px
+        width: 300px;
     }
 
     .add {
-        position: absolute;
-        right: 500px;
+        /* position: absolute; */
+        /* right: 500px; */
+        display: flex;
+        margin-right: 0px;
     }
 
     button {
         width: 25px;
+    }
+
+    .btn-delete {
+        width: auto;
+        margin-right: 20px;
+    }
+
+    .total {
+        margin-right: 50px;
     }
 `

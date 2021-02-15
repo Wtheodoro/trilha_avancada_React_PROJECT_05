@@ -80,7 +80,6 @@ const Spotlights = () => {
 
   return (
     <>
-      <h1>Destaques no Empório</h1>
       <Container>
       {
         beers?.map((i: BeerItemType) => (
