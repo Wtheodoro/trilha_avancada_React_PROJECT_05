@@ -11,7 +11,8 @@ import { Container, BuyCart } from './styles';
 const Cart = () => {
 
   const [reRender, setReRender] = useState<Boolean>(true)
-  const [budget, setBudget] = useState<any>([])
+  const budget: number[] = []
+  let result: number = 0
   const cartItens = useSelector((state: CarteItemState) => state.cartItem.cartItens)
   const budgetItens = useSelector((state: any) => state.budgetItem.arrayBudget)
   const newItemArray = cartItens
@@ -45,23 +46,19 @@ const Cart = () => {
     setReRender(!reRender)
   }
 
-  // Esta funcao ainda não funciona como deveria
   const calculator = (obj: EachCartItemType) => {
-    const price = Number(obj.price.substring(3).replace(',', '.'))
-    const indexOfBudget = budgetItens.findIndex((element: BudgetItemType) => element.itemPrice === price)
-    // dispatch(setBudget(budgetItens))
-
-    if (indexOfBudget) {
-      const ultPrice = price*obj.amount
-      budgetItens.splice(indexOfBudget, 1, ultPrice)
-    } else {
-      budgetItens.push(price)
-    }
-
+    const price = Number(obj.price.substring(3).replace(',', '.'))*obj.amount
+    budgetControll(obj)
     return price
   }
 
-  console.log(budgetItens)
+  const budgetControll = (obj: EachCartItemType) => {
+    const totalItemPrice = Number(obj.price.substring(3).replace(',', '.'))*obj.amount
+    // dispatch(setBudget(totalItemPrice))
+    budget.push(totalItemPrice)
+    const reducerArray = (accumulator: number, currentValue: number) => accumulator + currentValue
+    result = budget.reduce(reducerArray)
+  }
 
   return (
     <>
@@ -83,6 +80,10 @@ const Cart = () => {
             <p className="total">Total do item: R$ {calculator(i).toFixed(2)}</p>
           </BuyCart>
         ))
+      }
+      {
+        result > 0 &&
+        <p>Total do pedido: R$ {result.toFixed(2)}</p>
       }
     </Container>
     </>
