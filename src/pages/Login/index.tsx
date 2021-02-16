@@ -37,7 +37,7 @@ const Login = () => {
           <input type="number" placeholder="Idade" ref={inputAge}/>
           <input type="email" placeholder="Email" ref={inputEmail}/>
           <input type="password" placeholder="Senha" ref={inputPassword}/>
-          <button onClick={signIn}>Enviar</button>
+          <input type="submit" value="Cadastrar" onClick={signIn}/>
         </div>
       </Container>
       {
