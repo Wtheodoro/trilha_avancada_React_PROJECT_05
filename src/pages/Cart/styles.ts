@@ -2,6 +2,16 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     background: #EEE;
+    min-height: 84vh;
+
+    button {
+        padding: 5px;
+        background: #FF4B00;
+        color: white;
+        border: 1px solid #FF4B00;
+        border-radius: 5px;
+
+    }
 
 `;
 
@@ -24,10 +34,33 @@ export const BuyCart = styled.div`
     }
 
     .add {
-        /* position: absolute; */
-        /* right: 500px; */
         display: flex;
         margin-right: 0px;
+        width: 100px;
+        height: 30px;
+        justify-content: space-between;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        /* opacity: 0.7; */
+        border-radius: 5px;
+
+        button {
+
+
+            &:nth-child(1) {
+                border-radius: 5px 0 0 5px;
+            }
+
+            &:nth-child(3) {
+                border-radius: 0 5px 5px 0;
+            }
+        }
+
+        p {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
     }
 
     button {
@@ -42,4 +75,15 @@ export const BuyCart = styled.div`
     .total {
         margin-right: 50px;
     }
+`
+
+export const End = styled.div`
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+    background: white;
+    width: 300px;
+    justify-content: space-around;
+    border-radius: 5px;
+
 `

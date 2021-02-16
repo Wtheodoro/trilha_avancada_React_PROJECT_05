@@ -6,7 +6,7 @@ import { BudgetItemState, BudgetItemType, BudgetType } from '../../store/ducks/b
 import { deleteCartItem, setCartItem } from '../../store/ducks/cartItem/actions';
 import { CarteItemState, EachCartItemType } from '../../store/ducks/cartItem/types';
 
-import { Container, BuyCart } from './styles';
+import { Container, BuyCart, End } from './styles';
 
 const Cart = () => {
 
@@ -88,10 +88,10 @@ const Cart = () => {
       }
       {
         result > 0 &&
-        <>
+        <End>
         <p>Total do pedido: R$ {result.toFixed(2)}</p>
-        <button onClick={finishOrder}>FIM DE TUDO!</button>
-        </>
+        <button onClick={finishOrder}>Finalizar</button>
+        </End>
       }
     </Container>
     </>

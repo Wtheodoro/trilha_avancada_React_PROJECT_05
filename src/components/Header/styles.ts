@@ -43,6 +43,7 @@ export const Categories = styled.div`
 
         li {
             margin-left: 30px;
+            list-style-type: none;
         }
     }
 
