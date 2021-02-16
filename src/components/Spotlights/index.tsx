@@ -4,13 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import api from '../../services/api';
 import { getBeers } from '../../store/ducks/beers/actions';
 import { BeerItemType } from '../../store/ducks/beers/types';
-
+import { AiOutlineShopping } from 'react-icons/ai'
 import { Container, Box } from './styles';
 import { getCategories } from '../../store/ducks/categories/actions';
 import { setCartItem } from '../../store/ducks/cartItem/actions';
 import { CarteItemState, EachCartItemType } from '../../store/ducks/cartItem/types';
-import { CategoriesState } from '../../store/ducks/categories/types';
-import { isTemplateTail } from 'typescript';
 
 const Spotlights = () => {
 
@@ -85,11 +83,16 @@ const Spotlights = () => {
         beers?.map((i: BeerItemType) => (
           <Box key={i.id}>
             <div className="card">
-              <img src={i.image} alt={i.title} className="product"/>
-              <h2>{i.title}</h2>
-              <p>{i.description}</p>
-              <p>{i.price}</p>
-              <Link to="/cart" onClick={() => addCart(i)}>Comprar</Link>
+              <div className="top">
+                <img src={i.image} alt={i.title} className="product"/>
+                <h3>{i.description}</h3>
+                <h2>{i.title}</h2>
+              </div>
+              <div className="bot">
+                <p>{i.price}</p>
+                <Link to="/cart" onClick={() => addCart(i)}>Adicionar <AiOutlineShopping/></Link>
+              </div>
+              
             </div>
           </Box>
         )) 

@@ -26,8 +26,12 @@ export const Container = styled.div`
             text-decoration: none;
             color: #000;
         }
+
+        .input {
+            display: flex;
+        }
     }
-    }  
+}
 `
 
 export const Categories = styled.div`
