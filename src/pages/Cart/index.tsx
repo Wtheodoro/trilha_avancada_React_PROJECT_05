@@ -69,7 +69,11 @@ const Cart = () => {
     <>
     <Notification />
     <Container>
-      <h1>Carrrinho</h1>
+      {
+        cartItens.length === 0
+        ? <h1>Seu carrinho está vazio :(</h1>
+        : <h1>Carrinho</h1>
+      }
       {
         cartItens.map((i: EachCartItemType) => (
           <BuyCart key={i.id}>
