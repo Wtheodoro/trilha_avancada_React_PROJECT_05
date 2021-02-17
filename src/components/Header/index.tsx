@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
 import { Container, Categories, Border } from './styles';
 import { AiOutlineShoppingCart, AiOutlineUser, AiOutlineSearch } from 'react-icons/ai'
@@ -9,19 +9,27 @@ const Header = () => {
   
   const categories = useSelector((state: CategoriesState) => state.categories.arrayCategories)
 
+  const deleteItem = () => { localStorage.removeItem('accessToken') }
+
   return (
     <>
       <Container>
         <div className="content">
           <img src="http://www.cupomvalido.com.br/wp-content/uploads/emporio-da-cerveja-logo-1.png" alt="Logo"/>
-          <div className="search">
-            <input type="text" placeholder="Busque pela marca, estilo ou sabor"/>
-            <AiOutlineSearch className="search-icon"/>
-          </div>
-          <div className="rightSide">
-            <Link to="/">Login<AiOutlineUser /></Link>
-            <Link to="/cart">Carrinho<AiOutlineShoppingCart /></Link>
-          </div>
+          {
+            localStorage.getItem('accessToken') &&
+            <>
+              <div className="search">
+                <input type="text" placeholder="Busque pela marca, estilo ou sabor"/>
+                <AiOutlineSearch className="search-icon"/>
+              </div>
+              <div className="rightSide">
+                <Link to="/" onClick={deleteItem}>Login<AiOutlineUser /></Link>
+                <Link to="/cart">Carrinho<AiOutlineShoppingCart /></Link>
+              </div>
+            </>
+            }
+          
         </div>
       </Container>
       <Categories>
