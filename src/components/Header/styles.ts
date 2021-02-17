@@ -13,25 +13,37 @@ export const Container = styled.div`
         }
 
         input {
-            width: 500px
+            width: 500px;
+            height: 30px;
+        }
+
+        svg {
+            font-size: 25px;
         }
 
         .rightSide {
-        svg {
-            font-size: 25px;
-            margin-right: 20px
-        }
+            svg {
+                font-size: 25px;
+                margin-right: 20px
+            }
 
-        a {
-            text-decoration: none;
-            color: #000;
+            a {
+                text-decoration: none;
+                color: #000;
+            }
         }
-
-        .input {
+        .search {
             display: flex;
+            
+            svg {
+                background: red;
+                padding: 5px;
+                background: #FEAF44;
+                border-radius: 0 5px 5px 0;
+            }
         }
     }
-}
+
 `
 
 export const Categories = styled.div`
@@ -40,9 +52,10 @@ export const Categories = styled.div`
         justify-content: center;
         flex-wrap: wrap;
         margin-bottom: 10px;
+        margin-left: -40px;
 
         li {
-            margin-left: 30px;
+            margin-left: 40px;
             list-style-type: none;
         }
     }

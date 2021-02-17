@@ -14,9 +14,9 @@ const Header = () => {
       <Container>
         <div className="content">
           <img src="http://www.cupomvalido.com.br/wp-content/uploads/emporio-da-cerveja-logo-1.png" alt="Logo"/>
-          <div className="input">
+          <div className="search">
             <input type="text" placeholder="Busque pela marca, estilo ou sabor"/>
-            <div className="search"><AiOutlineSearch/></div>
+            <AiOutlineSearch className="search-icon"/>
           </div>
           <div className="rightSide">
             Login<AiOutlineUser />

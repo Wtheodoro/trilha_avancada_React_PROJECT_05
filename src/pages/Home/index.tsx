@@ -10,7 +10,7 @@ const Home = () => {
     <>
       <Notification />
       <Container>
-        <h2>Destaques no Empório</h2>
+        <h2>🍺 Destaques no Empório</h2>
         <Spotlights />
       </Container>
     </>
