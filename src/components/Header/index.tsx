@@ -19,9 +19,8 @@ const Header = () => {
             <AiOutlineSearch className="search-icon"/>
           </div>
           <div className="rightSide">
-            Login<AiOutlineUser />
+            <Link to="/">Login<AiOutlineUser /></Link>
             <Link to="/cart">Carrinho<AiOutlineShoppingCart /></Link>
-            
           </div>
         </div>
       </Container>
