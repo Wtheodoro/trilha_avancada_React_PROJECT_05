@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import api from '../../services/api';
-import { getBeers } from '../../store/ducks/beers/actions';
 import { BeerItemType } from '../../store/ducks/beers/types';
 import { AiOutlineShopping } from 'react-icons/ai'
 import { Container, Box } from './styles';
@@ -13,7 +12,6 @@ import { CarteItemState, EachCartItemType } from '../../store/ducks/cartItem/typ
 const Spotlights = () => {
 
   const [denyPermission,setDenyPermission] = useState<Boolean>(false)
-  // TIPAR ISSO
   const [beers,  setBeers] = useState<BeerItemType[]>()
 
   const dispatch = useDispatch()

@@ -1,9 +1,7 @@
 import React, { useRef, useState } from 'react';
 import api from '../../services/api';
 import { Redirect } from 'react-router-dom'
-
 import { Container } from './styles';
-import Header from '../../components/Header';
 
 const Login = () => {
   const [permission, setPermission] = useState<Boolean>(false)

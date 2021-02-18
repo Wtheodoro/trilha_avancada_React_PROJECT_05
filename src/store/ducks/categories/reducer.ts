@@ -10,6 +10,10 @@ function reducerCategories(state = initialStateCategories, action: any) {
             return {
                 arrayCategories: action.payload
             }
+        case CategoriesEnumType.DELETE_CATEGORIES:
+            return {
+                arrayCategories: []
+            }
         default:
              return state
     }

@@ -21,7 +21,7 @@ export const BuyCart = styled.div`
     align-items: center;
     justify-content: space-between;
     background: white;
-    border-radius: 20px;
+    border-radius: 5px;
     
     img {
         margin-left: 20px;

@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import Header from '../../components/Header';
 import Notification from '../../components/Notification';
-import { BudgetItemState, BudgetItemType, BudgetType } from '../../store/ducks/budget/types';
 import { deleteCartItem, setCartItem } from '../../store/ducks/cartItem/actions';
 import { CarteItemState, EachCartItemType } from '../../store/ducks/cartItem/types';
 
@@ -14,7 +12,6 @@ const Cart = () => {
   const budget: number[] = []
   let result: number = 0
   const cartItens = useSelector((state: CarteItemState) => state.cartItem.cartItens)
-  const budgetItens = useSelector((state: any) => state.budgetItem.arrayBudget)
   const newItemArray = cartItens
   
   const dispatch = useDispatch()

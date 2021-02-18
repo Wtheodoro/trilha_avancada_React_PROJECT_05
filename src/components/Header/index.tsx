@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Container, Categories, Border } from './styles';
 import { AiOutlineShoppingCart, AiOutlineUser, AiOutlineSearch } from 'react-icons/ai'
 import { CategoriesItemType, CategoriesState } from '../../store/ducks/categories/types';
 import { Link } from 'react-router-dom';
+import { deleteCategories } from '../../store/ducks/categories/actions';
+import { deleteCartItem } from '../../store/ducks/cartItem/actions';
 
 const Header = () => {
+  const [render, reRender]=useState<Boolean>(false)
   
   const categories = useSelector((state: CategoriesState) => state.categories.arrayCategories)
+  const dispatch = useDispatch()
 
-  const deleteItem = () => { localStorage.removeItem('accessToken') }
+  const deleteInfo = () => { 
+    localStorage.removeItem('accessToken')
+    reRender(!render)
+    dispatch(deleteCategories())
+    dispatch(deleteCartItem())
+  }
 
   return (
     <>
@@ -24,12 +33,11 @@ const Header = () => {
                 <AiOutlineSearch className="search-icon"/>
               </div>
               <div className="rightSide">
-                <Link to="/" onClick={deleteItem}>Login<AiOutlineUser /></Link>
+                <Link to="/" onClick={deleteInfo}>Login<AiOutlineUser /></Link>
                 <Link to="/cart">Carrinho<AiOutlineShoppingCart /></Link>
               </div>
             </>
             }
-          
         </div>
       </Container>
       <Categories>

@@ -1,5 +1,6 @@
 export enum CategoriesEnumType {
-    GET_CATEGORIES = '@GET_CATEGORIES'
+    GET_CATEGORIES = '@GET_CATEGORIES',
+    DELETE_CATEGORIES = '@DELETE_CATEGORIES'
 }
 
 export interface CategoriesItemType {
