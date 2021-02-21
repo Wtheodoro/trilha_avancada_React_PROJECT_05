@@ -4,6 +4,21 @@ export const Container = styled.div`
     background: #EEE;
     min-height: 84vh;
 
+    .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            text-decoration: none;
+            color: white;
+            margin: 10px 10px 0 0;
+            background: #FF4B00;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    }
+
     button {
         padding: 5px;
         background: #FF4B00;

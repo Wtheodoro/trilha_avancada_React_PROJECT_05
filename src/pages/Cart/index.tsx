@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom';
 import Notification from '../../components/Notification';
 import { deleteCartItem, setCartItem } from '../../store/ducks/cartItem/actions';
 import { CarteItemState, EachCartItemType } from '../../store/ducks/cartItem/types';
@@ -66,11 +67,16 @@ const Cart = () => {
     <>
     <Notification />
     <Container>
-      {
-        cartItens.length === 0
-        ? <h1>Seu carrinho está vazio :(</h1>
-        : <h1>Carrinho</h1>
-      }
+      <div className="top">
+        {
+          cartItens.length === 0
+          ? <h1>Seu carrinho está vazio :(</h1>
+          : <h1>Carrinho</h1>
+        }
+
+        <Link to="/home">Continuar comprando</Link>
+      </div>
+      
       {
         cartItens.map((i: EachCartItemType) => (
           <BuyCart key={i.id}>
