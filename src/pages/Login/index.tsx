@@ -22,7 +22,7 @@ const Login = () => {
           setPermission(true)
         })
     } else {
-      alert('Seu marginal, vai pra escola! Você nem tem idade pra beber, muito menos comprar bebida')
+      alert('O acesso ao conteúdo é restrito à pessoas adultas.')
     }
   }
 

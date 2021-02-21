@@ -57,6 +57,10 @@ export const Categories = styled.div`
         li {
             margin-left: 40px;
             list-style-type: none;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 

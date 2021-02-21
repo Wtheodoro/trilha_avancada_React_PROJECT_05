@@ -29,7 +29,6 @@ export const Box = styled.div`
             margin-bottom: 10px;
 
             img {
-                /* width: 260px; */
                 height: 180px;
                 width: auto;
             }
