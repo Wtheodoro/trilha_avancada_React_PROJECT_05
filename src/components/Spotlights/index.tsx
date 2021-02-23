@@ -8,13 +8,38 @@ import { Container, Box } from './styles';
 import { getCategories } from '../../store/ducks/categories/actions';
 import { setCartItem } from '../../store/ducks/cartItem/actions';
 import { CarteItemState, EachCartItemType } from '../../store/ducks/cartItem/types';
+import toast from 'react-hot-toast';
 
 const Spotlights = () => {
+
+  interface Headers {
+    Authorization: string
+  }
 
   const [denyPermission,setDenyPermission] = useState<Boolean>(false)
   const [beers,  setBeers] = useState<BeerItemType[]>()
 
   const dispatch = useDispatch()
+
+  const getCategories = async (headers: Headers) => {
+    try {
+      const response = await api.get(`/categories`, {headers: headers})
+      dispatch(getCategories(response.data))
+      console.log(response.data)
+
+    } catch (error) {
+      toast.error('Não foi possivel carregar as categorias')
+    }
+  }
+
+  const getBeers = async (headers: Headers) => {
+    try {
+      const response = await api.get(`/beers`, {headers: headers})
+        setBeers(response.data)
+    } catch(error) {
+        toast.error('Não foi possivel carregar as bebidas')
+    }
+  }
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) {
@@ -22,14 +47,8 @@ const Spotlights = () => {
       const headers = {
         'Authorization' : `Bearer ${accessToken}`
       }
-      api.get(`/categories`, {headers: headers})
-        .then(response => {
-          dispatch(getCategories(response.data))
-        })
-
-      api.get(`/beers`, {headers: headers})
-        .then(response => setBeers(response.data))
-
+      getCategories(headers)
+      getBeers(headers)
     } else {
       setDenyPermission(true)
     }
