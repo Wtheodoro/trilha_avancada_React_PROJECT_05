@@ -16,23 +16,25 @@ const Spotlights = () => {
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  async function getCategoriesAxios () {
     if (localStorage.getItem('accessToken')) {
       const accessToken = localStorage.getItem('accessToken')
       const headers = {
         'Authorization' : `Bearer ${accessToken}`
       }
-      api.get(`/categories`, {headers: headers})
-        .then(response => {
-          dispatch(getCategories(response.data))
-        })
+      const categories = await api.get(`/categories`, {headers: headers})
+      dispatch(getCategories(categories.data))
 
-      api.get(`/beers`, {headers: headers})
-        .then(response => setBeers(response.data))
+      const beers = await api.get(`/beers`, {headers: headers})
+      setBeers(beers.data)
 
     } else {
       setDenyPermission(true)
     }
+  }
+
+  useEffect(() => {
+    getCategoriesAxios()
   }, [])
 
   const cartItens = useSelector((state: CarteItemState) => state.cartItem.cartItens)
