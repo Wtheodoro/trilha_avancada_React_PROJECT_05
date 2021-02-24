@@ -8,8 +8,13 @@ import { Container, Box } from './styles';
 import { getCategories } from '../../store/ducks/categories/actions';
 import { setCartItem } from '../../store/ducks/cartItem/actions';
 import { CarteItemState, EachCartItemType } from '../../store/ducks/cartItem/types';
+import toast from 'react-hot-toast';
 
 const Spotlights = () => {
+
+  interface Headers {
+    Authorization: string
+  }
 
   const [denyPermission,setDenyPermission] = useState<Boolean>(false)
   const [beers,  setBeers] = useState<BeerItemType[]>()
@@ -17,21 +22,26 @@ const Spotlights = () => {
   const dispatch = useDispatch()
 
   async function getCategoriesAxios () {
-    if (localStorage.getItem('accessToken')) {
-      const accessToken = localStorage.getItem('accessToken')
-      const headers = {
-        'Authorization' : `Bearer ${accessToken}`
+    try {
+      if (localStorage.getItem('accessToken')) {
+        const accessToken = localStorage.getItem('accessToken')
+        const headers = {
+          'Authorization' : `Bearer ${accessToken}`
+        }
+        const categories = await api.get(`/categories`, {headers: headers})
+        dispatch(getCategories(categories.data))
+  
+        const beers = await api.get(`/beers`, {headers: headers})
+        setBeers(beers.data)
+  
+      } else {
+        setDenyPermission(true)
       }
-      const categories = await api.get(`/categories`, {headers: headers})
-      dispatch(getCategories(categories.data))
-
-      const beers = await api.get(`/beers`, {headers: headers})
-      setBeers(beers.data)
-
-    } else {
-      setDenyPermission(true)
+    } catch(error) {
+        console.log(error)
+      }
     }
-  }
+  
 
   useEffect(() => {
     getCategoriesAxios()

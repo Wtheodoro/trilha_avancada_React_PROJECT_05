@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import api from '../../services/api';
 import { Redirect } from 'react-router-dom'
 import { Container } from './styles';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
   const [permission, setPermission] = useState<Boolean>(false)
@@ -11,18 +12,18 @@ const Login = () => {
   const inputEmail = useRef<HTMLInputElement>(null)
   const inputPassword = useRef<HTMLInputElement>(null)
 
-  const signIn = () => {
+  const signIn = async () => {
     if (Number(inputAge.current?.value) >= 18) {
-      api.post('/register', {
+      const response  = await api.post('/register', {
         email: inputEmail.current?.value,
         password: inputPassword.current?.value
       })
-        .then(response => {
+        {
           localStorage.setItem("accessToken", response.data.accessToken)
           setPermission(true)
-        })
+        }
     } else {
-      alert('O acesso ao conteúdo é restrito à pessoas adultas.')
+      toast.error('O acesso ao conteúdo é restrito à pessoas adultas.')
     }
   }
 
@@ -42,6 +43,7 @@ const Login = () => {
         permission &&
         <Redirect to="/home" />
       }
+      <Toaster />
     </>
   );
 };
