@@ -1,4 +1,3 @@
-# TESTANDO COMMIT
 ### `git clone`
 
 first you need to clone this repository.
