@@ -1,6 +1,6 @@
 ## Preview
 
-![gif](https://github.com/Wtheodoro/trilha_avancada_React_PROJECT_05/blob/main/gif/Grava%C3%A7%C3%A3o%20de%20tela%20de%2005-03-2021%2011:11:31.webm)
+![gif](https://github.com/Wtheodoro/trilha_avancada_React_PROJECT_05/blob/main/gif/emporio.gif)
 
 ### `git clone`
 
