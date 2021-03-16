@@ -31,6 +31,7 @@ export const Box = styled.div`
             img {
                 height: 180px;
                 width: auto;
+                max-height: 100%;
             }
 
             h2 {
@@ -39,12 +40,14 @@ export const Box = styled.div`
                 font-weight: 500;
             }
 
-            h3 {
+            p {
                 padding: 0;
                 font-size: 1rem;
                 font-weight: 400;
                 color: #000;
                 opacity: 0.6;
+                max-height: 50px;
+                overflow-y: hidden;
             }
         }
 

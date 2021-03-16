@@ -95,7 +95,7 @@ const Spotlights = () => {
             <div className="card">
               <div className="top">
                 <img src={i.image} alt={i.title} className="product"/>
-                <h3>{i.description}</h3>
+                <p>{i.description}</p>
                 <h2>{i.title}</h2>
               </div>
               <div className="bot">
